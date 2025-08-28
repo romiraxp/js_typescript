@@ -1,3 +1,5 @@
+[![CI Pipeline](https://github.com/romiraxp/js_typescript/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/romiraxp/js_typescript/actions/workflows/main.yml)
+
 # Домашнее задание к лекции «TypeScript»
 
 **Важно**: все задачи допустимо выполнять в одном GitHub репозитории.
