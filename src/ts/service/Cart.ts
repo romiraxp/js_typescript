@@ -40,6 +40,8 @@ export default class Cart {
                     break;
                 }
             }
+        } else {
+            throw new Error('The cart is empty');
         }
     }
 }

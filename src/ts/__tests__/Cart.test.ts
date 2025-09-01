@@ -24,11 +24,6 @@ test('calculate total sum and discount calculate', () => {
   cart.add(new MusicAlbum(1008, 'Meteora', 'Linkin Park', 900));
   cart.add(new Movie(1010, 'The Avengers', 500, 2012,'США','Avengers Assemble!',genre,'137 мин. / 02:17'));
 
-  /*let total = 0;
-  cart.items.forEach(element => {
-    total += element.price
-  });*/
-  
   expect(cart.calculate()).toBe(3400);
   expect(cart.discount(10)).toBe(3060);
   expect(cart.discount(0)).toBe(3400);
@@ -43,9 +38,33 @@ test('removal from the cart', () => {
   cart.add(new MusicAlbum(1008, 'Meteora', 'Linkin Park', 900));
   cart.add(new Movie(1010, 'The Avengers', 500, 2012,'США','Avengers Assemble!',genre,'137 мин. / 02:17'));
 
-  const fn = jest.fn();
-  cart.fromCart(0);
+  let lengthArr = cart.items.length
+
+  cart.fromCart(1001);
+
+  let lengthArr_new = cart.items.length
+    
+  expect(lengthArr_new).toBe(lengthArr - 1);
+})
+
+test('generate a message in a case the cart is empty', () => {
+  const cart = new Cart();
+  expect(() => cart.fromCart(1001)).toThrow('The cart is empty')
+})
+
+test('nothing to remove as there is no such ID', () => {
+  const cart = new Cart();
+  const genre = ['фантастика', 'боевик', 'фэнтези'];
   
-  //expect(cart.fromCart(0)).toBeUndefined();
-  expect(fn).toHaveBeenCalledWith(0)
+  cart.add(new Book(1001, 'War and Piece', 'Leo Tolstoy', 2000, 1225));
+  cart.add(new MusicAlbum(1008, 'Meteora', 'Linkin Park', 900));
+  cart.add(new Movie(1010, 'The Avengers', 500, 2012,'США','Avengers Assemble!',genre,'137 мин. / 02:17'));
+
+  let lengthArr = cart.items.length
+  
+  cart.fromCart(1000);
+  
+  let lengthArr_new = cart.items.length
+
+  expect(lengthArr_new).toBe(lengthArr);
 })
