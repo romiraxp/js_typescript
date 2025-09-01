@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   'env': {
     'browser': true,
     'es2021': true,
@@ -15,7 +15,7 @@ module.exports = {
   ],
   'parserOptions': {
     'ecmaVersion': 'latest',
-    'sourceType': 'module'
+    'sourceType': 'module',
   },
   'rules': {}
 };
